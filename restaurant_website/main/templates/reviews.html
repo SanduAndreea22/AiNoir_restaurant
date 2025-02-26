@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Reviews - Restaurant{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+        <h1 class="display-4 text-center mb-4">Reviews</h1>
+
+        <!-- Review Submission Form -->
+        <div class="row mb-5">
+            <div class="col-md-8 mx-auto">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">Submit Review</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success or Error Message -->
+        {% if message %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% elif errors %}
+            <div class="alert alert-danger text-center">
+                {{ errors }}
+            </div>
+        {% endif %}
+
+        <h2>User Reviews</h2>
+
+        <!-- Review List -->
+        {% for review in reviews %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ review.user_name }} -
+                        <span class="text-warning">
+                            {% for star in review.stars %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </span>
+                    </h5>
+                    <p class="card-text">{{ review.comment }}</p>
+                    <footer class="blockquote-footer">
+                        Submitted on: <i>{{ review.date }}</i>
+                    </footer>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">No reviews available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+

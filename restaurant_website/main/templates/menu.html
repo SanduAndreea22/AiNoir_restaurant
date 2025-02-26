@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Menu | Al Noir{% endblock %}
+
+{% block content %}
+<!-- Menu Section -->
+<section class="menu py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4 text-center">Our Menu</h1>
+        <p class="lead text-center mb-5">Discover the authentic flavors of the Middle East, prepared with passion and quality ingredients.</p>
+
+        <!-- Menu Categories -->
+        <div class="menu-categories">
+            {% for category in categories %}
+                <div class="category-section py-5">
+                    <h2 class="text-center mb-4">{{ category.name }}</h2>
+
+                    <!-- Dishes in each category -->
+                    <div class="row">
+                        {% for dish in category.dishes.all %}
+                            <div class="col-md-4 mb-4">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ dish.name }}</h3>
+                                        <p><strong>Ingredients:</strong> {{ dish.ingredients }}</p>
+                                        <p>{{ dish.description }}</p>
+
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="price"><strong>Price:</strong> {{ dish.price }} EURO</p>
+                                            {% if dish.is_special %}
+                                                <span class="badge badge-success">Chef's Recommendation!</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+

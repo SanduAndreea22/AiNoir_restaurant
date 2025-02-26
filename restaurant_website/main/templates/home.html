@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | Al Noir{% endblock %}
+
+{% block content %}
+<!-- Large Banner with Slogan -->
+<section class="hero bg-dark text-white text-center py-5" style="background-image: url('/static/images/restaurant-hero.jpg'); background-size: cover; background-position: center;">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Welcome to Al Noir!</h1>
+        <p class="lead mb-4">Discover the authentic flavors of Arab cuisine in an unforgettable atmosphere.</p>
+        <a href="/reservation/" class="btn btn-warning btn-lg mt-3">Book a Table</a>
+    </div>
+</section>
+
+<!-- Restaurant Introduction Section -->
+<section class="intro py-5">
+    <div class="container text-center">
+        <h2 class="display-4 mb-4">About Al Noir</h2>
+        <p class="lead mb-4">Al Noir is an Arab-themed restaurant where tradition and authentic taste meet to offer you a unique culinary experience. Every meal is a journey to the heart of the East, with carefully prepared dishes served with passion.</p>
+        <p class="mb-4">From shawarma and falafel to traditional grilled meat platters and refined Arab desserts, we invite you to savor an explosion of authentic flavors.</p>
+    </div>
+</section>
+
+<!-- Quick Menu Section -->
+<section class="quick-menu py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="display-4 mb-4">Quick Menu</h2>
+        <p class="lead mb-4">Easily explore the key sections:</p>
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <a href="/menu/" class="btn btn-outline-dark btn-lg w-100">Menu</a>
+            </div>
+            <div class="col-md-3 mb-3">
+                <a href="/about/" class="btn btn-outline-dark btn-lg w-100">About Us</a>
+            </div>
+            <div class="col-md-3 mb-3">
+                <a href="/reservation/" class="btn btn-outline-dark btn-lg w-100">Reservations</a>
+            </div>
+            <div class="col-md-3 mb-3">
+                <a href="/contact/" class="btn btn-outline-dark btn-lg w-100">Contact</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call-to-Action Button for Reservations -->
+<section class="cta text-center py-5 bg-warning text-white">
+    <div class="container">
+        <h2 class="display-4 mb-4">Dreaming of the perfect meal?</h2>
+        <p class="lead mb-4">Book now and get ready to discover the authentic flavors of the Middle East, in an elegant and welcoming setting.</p>
+        <a href="/reservation/" class="btn btn-dark btn-lg">Book Now!</a>
+    </div>
+</section>
+{% endblock %}
+
+
+
+

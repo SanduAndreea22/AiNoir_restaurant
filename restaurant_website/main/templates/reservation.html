@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserve a Table | Al Noir{% endblock %}
+
+{% block content %}
+<!-- Reservation Section -->
+<section class="reservation py-5">
+    <div class="container">
+        <h1 class="display-4 text-center">Reserve a Table</h1>
+        <p class="lead text-center mb-4">Fill out the form to reserve a table at our restaurant. Reservations can include special events.</p>
+
+        <!-- Success or Error Message -->
+        {% if message %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% elif errors %}
+            <div class="alert alert-danger text-center">
+                {{ errors }}
+            </div>
+        {% endif %}
+
+        <!-- Reservation Form -->
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Reserve Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
