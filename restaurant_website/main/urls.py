@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # Pagina principală
@@ -10,6 +11,9 @@ urlpatterns = [
 
     # Pagina Meniu (cu lista categoriilor)
     path('menu/', views.menu, name='menu'),
+
+    # Detalii categorie (lista preparatelor dintr-o categorie)
+    path('menu/category/<int:category_id>/', views.category_details, name='category_details'),
 
     # Pagina Rezervări
     path('reservation/', views.reservation, name='reservation'),
@@ -29,7 +33,16 @@ urlpatterns = [
     # Pagina de succes pentru recenzie
     path('review_success/', views.review_success, name='review_success'),
 
-    # Detalii pentru un anumit preparat (dacă vrei să o adaugi)
-    # path('dish/<int:id>/', views.dish_detail, name='dish_detail'),  # Detalii preparat
+    # Funcționalități pentru autentificare
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+
+    # Pagina de confirmare a înregistrării
+    path('confirmation/', views.confirmation, name='confirmation'),
+    path('reservation/history/', views.reservation_history, name='reservation_history'),
 
 ]
+
+
+

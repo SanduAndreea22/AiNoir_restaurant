@@ -27,15 +27,38 @@
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == '/menu/' %}active{% endif %}" href="/menu/">Menu</a>
                         </li>
+
+                        {% if user.is_authenticated %}
+                        <!-- Only show these links if the user is logged in -->
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == '/reservation/' %}active{% endif %}" href="/reservation/">Reserve a Table</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="/contact/">Contact</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link {% if request.path == '/reviews/' %}active{% endif %}" href="/reviews/">Reviews</a>
                         </li>
+                        <!-- New Link for Reservation History -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == '/reservation/history/' %}active{% endif %}" href="/reservation/history/">Reservation History</a>
+                        </li>
+                        {% endif %}
+
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="/contact/">Contact</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <!-- Logout -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <!-- Login/Register -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == '/login/' %}active{% endif %}" href="/login/">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == '/signup/' %}active{% endif %}" href="/signup/">Sign Up</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -62,6 +85,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
 
 
 
